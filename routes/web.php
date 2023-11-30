@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
+
+Route::get('results', [ResultController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('results'); 
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
