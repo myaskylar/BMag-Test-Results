@@ -15,6 +15,15 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+
+        colors: {
+            cranberry: '#AE0F0A',
+            navy: '#19233E',
+            amber: '#FCB900',
+            skygrey: '#ABB8C3',
+
+
+        }
     },
 
     plugins: [forms],
