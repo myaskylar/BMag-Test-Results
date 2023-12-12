@@ -21,6 +21,8 @@ export default {
             navy: '#19233E',
             amber: '#FCB900',
             skygrey: '#ABB8C3',
+            white:'#FFFFFF',
+            red: '#FF0000',
 
 
         }
