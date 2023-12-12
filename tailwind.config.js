@@ -14,18 +14,23 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            
+            colors: {
+                cranberry: '#AE0F0A',
+                navy: '#19233E',
+                amber: '#FCB900',
+                skygrey: '#ABB8C3',
+                white:'#FFFFFF',
+                red: '#FF0000',
+                black: '#000000'
+            },
         },
 
+        
+        // Extend the default colors as well
         colors: {
-            cranberry: '#AE0F0A',
-            navy: '#19233E',
-            amber: '#FCB900',
-            skygrey: '#ABB8C3',
-            white:'#FFFFFF',
-            red: '#FF0000',
-
-
-        }
+            ...defaultTheme.colors,
+        },
     },
 
     plugins: [forms],
