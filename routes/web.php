@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'main');
 
 Route::get('results', [ResultController::class, 'index'])
     ->middleware(['auth', 'verified'])

@@ -5,6 +5,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use function Livewire\Volt\{rules};
 
 new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
@@ -34,18 +35,15 @@ new #[Layout('layouts.guest')] class extends Component {
             <p class="text-sm">BoilerMag Test Strip Results App</p>
         </div>
 
-        <!-- Email Address -->
+        <!-- Email or Username -->
         <div class="mt-4">
-            {{-- <x-input-label for="email" :value="__('Email')" /> --}}
-            <x-text-input wire:model="form.email" id="email" placeholder="Email" class="block mt-1 w-full"
-                type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-text-input wire:model="form.input_type" id="input_type" placeholder="Email or Username" class="block mt-1 w-full"
+                type="text" name="input_type" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('form.input_type')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            {{-- <x-input-label for="password" :value="__('Password')" /> --}}
-
             <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" placeholder="Password"
                 type="password" name="password" required autocomplete="current-password" />
 
@@ -69,7 +67,7 @@ new #[Layout('layouts.guest')] class extends Component {
         </div>
 
         <div class="items-center mt-4">
-            <x-primary-button class="mt-3 w-full rounded-full bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-400">
+            <x-primary-button class="mt-3 w-full rounded-full bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-400" wire:loading.attr="disabled">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
