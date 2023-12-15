@@ -5,7 +5,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
-use function Livewire\Volt\{rules};
 
 new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
@@ -15,7 +14,10 @@ new #[Layout('layouts.guest')] class extends Component {
      */
     public function login(): void
     {
-        $this->validate();
+        $this->validate([
+            'form.login' => 'required|string',
+            'form.password' => 'required'
+        ]);
 
         $this->form->authenticate();
 
@@ -37,9 +39,9 @@ new #[Layout('layouts.guest')] class extends Component {
 
         <!-- Email or Username -->
         <div class="mt-4">
-            <x-text-input wire:model="form.input_type" id="input_type" placeholder="Email or Username" class="block mt-1 w-full"
-                type="text" name="input_type" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('form.input_type')" class="mt-2" />
+            <x-text-input wire:model="form.login" id="login" placeholder="Email or Username" class="block mt-1 w-full"
+                type="text" name="login" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('form.login')" class="mt-2" />
         </div>
 
         <!-- Password -->

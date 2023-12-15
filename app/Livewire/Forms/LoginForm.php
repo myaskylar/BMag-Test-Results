@@ -12,8 +12,13 @@ use Livewire\Form;
 
 class LoginForm extends Form
 {
+    public string $login = '';
+
     #[Rule('required|string|email')]
     public string $email = '';
+
+    #[Rule('required|string')]
+    public string $username = '';
 
     #[Rule('required|string')]
     public string $password = '';
@@ -30,11 +35,15 @@ class LoginForm extends Form
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+        $field = filter_var($this->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        
+        $this->{$field} = $this->login;
+
+        if (! Auth::attempt($this->only([$field, 'password']), $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                $field => trans('auth.failed'),
             ]);
         }
 
@@ -54,8 +63,10 @@ class LoginForm extends Form
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
+        $field = filter_var($this->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            $field => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -67,6 +78,6 @@ class LoginForm extends Form
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->login).'|'.request()->ip());
     }
 }
