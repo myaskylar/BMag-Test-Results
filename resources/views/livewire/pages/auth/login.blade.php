@@ -25,7 +25,8 @@ new #[Layout('layouts.guest')] class extends Component {
 
         $this->redirect(session('url.intended', RouteServiceProvider::HOME), navigate: true);
     }
-}; ?>
+}; 
+?>
 
 <div>
     <!-- Session Status -->
@@ -74,7 +75,7 @@ new #[Layout('layouts.guest')] class extends Component {
             </x-primary-button>
         </div>
 
-        <div class="flex items-center mt-4">
+        <!-- <div class="flex items-center mt-4">
             <div class="flex-grow bg bg-gray-300 h-0.5"></div>
             <div class="flex-grow-0 mx-5 text dark:text-white">or</div>
             <div class="flex-grow bg bg-gray-300 h-0.5"></div>
@@ -88,13 +89,13 @@ new #[Layout('layouts.guest')] class extends Component {
             <x-primary-button class="mt-3 w-full border-2 border-black rounded-full bg-white px-4 py-2 font-bold text-black hover:bg-blue-400">
                 {{ 'Microsoft sign in' }}
             </x-primary-button>
-        </div>
+        </div> -->
 
-        <div class="flex justify-center item-center mt-4">
+        <!-- <div class="flex justify-center item-center mt-4">
             <p class="text-sm">Not register yet? </p>
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="ms-4 font-semibold text-sm text-blue-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Register</a>
                 @endif
-        </div>
+        </div> -->
     </form>
 </div>

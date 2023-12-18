@@ -15,11 +15,21 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('full_name');
             $table->string('username')->unique();
+            $table->string('role');
+            $table->string('department');
+            $table->integer('location_id');
+            $table->integer('report_to_id');
+            $table->string('image_path');
+            $table->string('phone');
+            $table->string('mobile');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('last_login');
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }

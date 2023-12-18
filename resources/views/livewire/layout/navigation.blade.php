@@ -30,7 +30,13 @@ new class extends Component
                     <x-nav-link :href="route('results')" :active="request()->routeIs('results')" wire:navigate>
                         {{ __('Results') }}
                     </x-nav-link>
-                
+
+                   @if (auth()->user()->role === 'admin')
+                        <x-nav-link :href="route('users')" :active="request()->routeIs('users')" wire:navigate>
+                            {{ __('Users') }}
+                        </x-nav-link>
+                   @endif
+                    
             </div>
 
             <!-- Settings Dropdown -->

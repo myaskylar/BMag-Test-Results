@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Result; 
+use App\Models\Result;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On; 
 use Livewire\Volt\Component;

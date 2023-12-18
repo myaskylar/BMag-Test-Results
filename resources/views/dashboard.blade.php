@@ -1,5 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
+   <livewire:pages.dashboard.welcome-note />
+</x-app-layout>
+ 
+    
+    <!-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
@@ -13,5 +17,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </div>  -->
