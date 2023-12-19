@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component {
+new #[Layout('layouts.guest')] class extends Component
+{
     public LoginForm $form;
 
     /**
@@ -25,7 +26,7 @@ new #[Layout('layouts.guest')] class extends Component {
 
         $this->redirect(session('url.intended', RouteServiceProvider::HOME), navigate: true);
     }
-}; 
+};
 ?>
 
 <div>
@@ -40,15 +41,13 @@ new #[Layout('layouts.guest')] class extends Component {
 
         <!-- Email or Username -->
         <div class="mt-4">
-            <x-text-input wire:model="form.login" id="login" placeholder="Email or Username" class="block mt-1 w-full"
-                type="text" name="login" required autofocus autocomplete="username" />
+            <x-text-input wire:model="form.login" id="login" placeholder="Email or Username" class="block mt-1 w-full" type="text" name="login" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('form.login')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" placeholder="Password"
-                type="password" name="password" required autocomplete="current-password" />
+            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" placeholder="Password" type="password" name="password" required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -56,16 +55,14 @@ new #[Layout('layouts.guest')] class extends Component {
         <!-- Remember Me -->
         <div class="block mt-4 flex justify-between">
             <label for="remember" class="inline-flex items-center">
-                <input wire:model="form.remember" id="remember" type="checkbox"
-                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input wire:model="form.remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-blue-600">{{ __('Remember me') }}</span>
             </label>
 
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-blue-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </a>
+            <a class="underline text-sm text-blue-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}" wire:navigate>
+                {{ __('Forgot your password?') }}
+            </a>
             @endif
         </div>
 
@@ -74,28 +71,5 @@ new #[Layout('layouts.guest')] class extends Component {
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-
-        <!-- <div class="flex items-center mt-4">
-            <div class="flex-grow bg bg-gray-300 h-0.5"></div>
-            <div class="flex-grow-0 mx-5 text dark:text-white">or</div>
-            <div class="flex-grow bg bg-gray-300 h-0.5"></div>
-         </div>
-
-         <div class="items-center mt-1">
-            <x-primary-button class="mt-3 w-full border-2 border-black rounded-full bg-white px-4 py-2 font-bold text-black hover:bg-blue-400">
-                {{ 'Google sign in' }}
-            </x-primary-button>
-
-            <x-primary-button class="mt-3 w-full border-2 border-black rounded-full bg-white px-4 py-2 font-bold text-black hover:bg-blue-400">
-                {{ 'Microsoft sign in' }}
-            </x-primary-button>
-        </div> -->
-
-        <!-- <div class="flex justify-center item-center mt-4">
-            <p class="text-sm">Not register yet? </p>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ms-4 font-semibold text-sm text-blue-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Register</a>
-                @endif
-        </div> -->
     </form>
 </div>

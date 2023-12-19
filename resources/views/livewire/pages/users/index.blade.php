@@ -2,9 +2,10 @@
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new class extends Component
+new #[Layout('layouts.app')] class extends Component
 {
 
     public Collection $users;
@@ -22,9 +23,14 @@ new class extends Component
 };
 ?>
 
-<div class="py-12">
+
+
+<div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
+            <x-slot name="header">
+                <x-title>All Users</x-title>
+            </x-slot>
 
             <table class="table-auto w-full">
                 <thead>
@@ -39,9 +45,9 @@ new class extends Component
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                    <tr class="border-b-2">
+                    <tr class="border-b-2" wire:key="{{ $user->id }}">
                         <td class="p-2">
-                            <a href="{{ route('user') }}" class="text-blue-500 hover:underline">
+                            <a href="{{ route('user', $user) }}" class="text-blue-500 hover:underline">
                                 {{ $user->id }}
                             </a>
                         </td>
@@ -68,8 +74,6 @@ new class extends Component
                     @endforeach
                 </tbody>
             </table>
-
-
         </div>
     </div>
 </div>
