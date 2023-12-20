@@ -23,9 +23,12 @@
             <livewire:layout.navigation />
         </div>
 
+
         <div class="col-span-1">
-            <livewire:layout.side-bar />
+            <livewire:layout.side-bar links="$links" />
         </div>
+
+
 
         <div class="col-span-3">
             <!-- Page Heading -->

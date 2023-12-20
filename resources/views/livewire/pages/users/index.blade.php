@@ -5,16 +5,16 @@ use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.app')] class extends Component
-{
+new #[Layout('layouts.app')]
 
+class extends Component
+{
     public Collection $users;
 
     public function mount(): void
     {
         $this->getAllUsers();
     }
-
 
     public function getAllUsers(): void
     {
@@ -23,15 +23,13 @@ new #[Layout('layouts.app')] class extends Component
 };
 ?>
 
-
+<x-slot name="header">
+    <x-title>All Users</x-title>
+</x-slot>
 
 <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-            <x-slot name="header">
-                <x-title>All Users</x-title>
-            </x-slot>
-
             <table class="table-auto w-full">
                 <thead>
                     <tr class="bg-navy text-white">
@@ -69,7 +67,6 @@ new #[Layout('layouts.app')] class extends Component
                                 </svg>
                             </button>
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>
