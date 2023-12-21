@@ -11,7 +11,7 @@ new #[Layout('layouts.app')]
 class extends Component
 {
     public Collection $users;
-    public array $links = array("Create New User");
+    public array $links = array(['Create page' => 'password.request',]);
 
     public function mount(Page $page): void
     { 
