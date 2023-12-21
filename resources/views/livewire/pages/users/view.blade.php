@@ -1,13 +1,25 @@
 <?php
 
+use App\Livewire\Pages\Page;
 use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.app')]  #[Title('User Detail')] class extends Component
+new #[Layout('layouts.app')]  
+
+class extends Component
 {
     public ?User $user = null;
+    public array $links = array("Edit User", "User Activity", "User Visit Record");
+
+  
+
+    public function mount(Page $page): void
+    { 
+        $page->setPageTitle("User Detail Page");
+        $page->setSideBarLinks($this->links);
+    }
 };
 ?>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\Page;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Layout;
@@ -10,15 +11,23 @@ new #[Layout('layouts.app')]
 class extends Component
 {
     public Collection $users;
+    public array $links = array("Create New User");
 
-    public function mount(): void
-    {
+    public function mount(Page $page): void
+    { 
+        $page->setPageTitle("Users Page");
+        $page->setSideBarLinks($this->links);
         $this->getAllUsers();
     }
 
     public function getAllUsers(): void
     {
         $this->users = User::all();
+    }
+
+    public static function getUsersString(): string
+    {
+        return "String from User Index Page";
     }
 };
 ?>

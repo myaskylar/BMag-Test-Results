@@ -25,7 +25,7 @@
 
 
         <div class="col-span-1">
-            <livewire:layout.side-bar links="$links" />
+            <livewire:layout.side-bar />
         </div>
 
 
