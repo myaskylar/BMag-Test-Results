@@ -17,38 +17,17 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 grid grid-cols-4">
-        <div class="col-span-4">
+    <div class="min-h-screen bg-gray-100">
+        <div class="h-fit">
             <livewire:Layout.header />
             <livewire:layout.navigation />
         </div>
-
-
-        <div class="col-span-1">
-            <livewire:layout.side-bar />
-        </div>
-
-
-
-        <div class="col-span-3">
-            <!-- Page Heading -->
-            @if (isset($header))
-            <header>
-                <div class="max-w-7xl bg-slate-400 mx-auto pt-8 px-4 mt-10 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-            @endif
-
+        <div class="mt-20">
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
-
-
-
-
     </div>
 </body>
 

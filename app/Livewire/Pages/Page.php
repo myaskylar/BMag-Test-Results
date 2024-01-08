@@ -4,8 +4,8 @@ namespace App\Livewire\Pages;
 
 class Page
 {
-    public static string $pageTitle;
-    public static array $pageSideBarLinks;
+    public static string $pageTitle = '';
+    public static array $pageSideBarLinks = [];
 
     public static function setPageTitle($title): string
     {
